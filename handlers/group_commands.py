@@ -344,3 +344,12 @@ async def ping_command(message: Message):
     )
     
     await message.reply(response)
+    
+@router.message(Command("hide_keyboard"))
+async def hide_keyboard(message: Message):
+    """Скрыть клавиатуру в группе"""
+    from aiogram.types import ReplyKeyboardRemove
+    await message.answer(
+        "⌨️ Клавиатура скрыта",
+        reply_markup=ReplyKeyboardRemove()
+    )

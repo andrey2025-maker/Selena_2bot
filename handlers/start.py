@@ -23,6 +23,8 @@ async def get_user_language(user_id: int) -> str:
 
 @router.message(Command("start"))
 async def cmd_start(message: Message):
+    if message.chat.type != "private":
+        return
     """Обработка команды /start"""
     user_id = message.from_user.id
     username = message.from_user.username
@@ -96,6 +98,8 @@ async def set_language(callback: CallbackQuery):
 
 @router.message(F.text.in_(["🔍 Проверить подписку", "🔍 Check subscription"]))
 async def check_subscription(message: Message):
+    if message.chat.type != "private":
+        return
     """Проверка подписки по кнопке"""
     user_id = message.from_user.id
     lang = await get_user_language(user_id)
@@ -169,6 +173,8 @@ async def show_settings_menu(message: Message, user_id: int, lang: str, lang_cod
 
 @router.message(F.text.in_(["🔔 Уведомления", "🔔 Notifications"]))
 async def show_notifications_menu(message: Message):
+    if message.chat.type != "private":
+        return
     """Показ меню уведомлений"""
     user_id = message.from_user.id
     lang = await get_user_language(user_id)
@@ -232,6 +238,8 @@ async def show_notifications_menu(message: Message):
 
 @router.message(F.text.in_(["🔕 Отключить", "🔕 Disable"]))
 async def disable_notifications(message: Message):
+    if message.chat.type != "private":
+        return
     """Полное отключение всех уведомлений"""
     user_id = message.from_user.id
     lang = await get_user_language(user_id)
@@ -252,6 +260,8 @@ async def disable_notifications(message: Message):
 
 @router.message(F.text.in_(["❓ Помощь", "❓ Help"]))
 async def show_help(message: Message):
+    if message.chat.type != "private":
+        return
     """Показ справки"""
     user_id = message.from_user.id
     lang = await get_user_language(user_id)
