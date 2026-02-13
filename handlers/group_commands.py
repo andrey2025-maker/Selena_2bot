@@ -144,7 +144,7 @@ async def check_author(callback: types.CallbackQuery) -> bool:
         return True
     
     if callback.from_user.id != author_id:
-        await callback.answer("❌ Это не ваш калькулятор!", show_alert=True)
+        await callback.answer("❌ Этот калькулятор запомнит твой отпечаток пальца и пожалуется Селене. Селена уже идет с ремнем!", show_alert=True)
         return False
     
     return True
